@@ -64,6 +64,42 @@
     .delay-two { animation-delay: 1.45s; }
     .video-wrap { position: relative; z-index: 0; width: min(100%, 780px); margin: 8px auto 0; }
     .video-wrap::before { content: ""; position: absolute; inset: 4% 6%; z-index: -1; background: rgba(255,182,193,.52); filter: blur(30px); border-radius: 40px; animation: breathing-light 3.6s ease-in-out infinite; }
+    .voice-card { position: relative; z-index: 1; margin: 0 0 18px; padding: 15px 18px 13px; text-align: left; background: linear-gradient(135deg, rgba(255,255,255,.98), rgba(255,244,238,.97)); border: 1px solid rgba(213,132,145,.24); border-radius: 24px; box-shadow: 0 12px 35px rgba(139,90,43,.1); }
+    .voice-main { display: flex; align-items: center; gap: 13px; }
+    .voice-icon { flex: 0 0 auto; display: flex; align-items: center; justify-content: center; gap: 3px; width: 44px; height: 44px; color: #fff; background: linear-gradient(145deg, #FFC4CD, #E89AA5); border-radius: 50%; box-shadow: 0 5px 13px rgba(213,132,145,.28); }
+    .voice-wave { display: flex; align-items: center; justify-content: center; gap: 3px; height: 24px; }
+    .voice-wave span { width: 3px; height: 8px; background: currentColor; border-radius: 99px; opacity: .9; }
+    .voice-wave span:nth-child(2) { height: 17px; }
+    .voice-wave span:nth-child(3) { height: 12px; }
+    .voice-card.is-playing .voice-wave span { animation: voice-dance .7s ease-in-out infinite alternate; }
+    .voice-card.is-playing .voice-wave span:nth-child(2) { animation-delay: -.35s; }
+    .voice-card.is-playing .voice-wave span:nth-child(3) { animation-delay: -.55s; }
+    .voice-copy { flex: 1 1 auto; min-width: 0; }
+    .voice-eyebrow { display: block; color: #B17478; font-size: 11px; line-height: 1.5; letter-spacing: 2px; }
+    .voice-title { display: block; margin-top: 1px; color: var(--brown); font-size: 17px; line-height: 1.5; }
+    .voice-toggle { flex: 0 0 auto; display: grid; place-items: center; width: 46px; height: 46px; padding: 0; color: #fff; background: var(--brown); border: 0; border-radius: 50%; box-shadow: 0 6px 16px rgba(139,90,43,.24); cursor: pointer; transition: transform .2s, background .2s; }
+    .voice-toggle:hover { transform: scale(1.05); background: #744823; }
+    .voice-toggle svg { display: block; width: 20px; height: 20px; }
+    .voice-toggle .pause-icon { display: none; }
+    .voice-card.is-playing .voice-toggle .play-icon { display: none; }
+    .voice-card.is-playing .voice-toggle .pause-icon { display: block; }
+    .voice-progress-row { display: flex; align-items: center; gap: 11px; margin: 11px 2px 0 57px; }
+    .voice-range { flex: 1 1 auto; width: 100%; height: 22px; margin: 0; padding: 0; background: transparent; cursor: pointer; -webkit-appearance: none; appearance: none; }
+    .voice-range::-webkit-slider-runnable-track { height: 4px; background: linear-gradient(90deg, var(--pink) 0 var(--voice-progress, 0%), rgba(139,90,43,.13) var(--voice-progress, 0%) 100%); border-radius: 99px; }
+    .voice-range::-moz-range-track { height: 4px; background: rgba(139,90,43,.13); border-radius: 99px; }
+    .voice-range::-moz-range-progress { height: 4px; background: var(--pink); border-radius: 99px; }
+    .voice-range::-webkit-slider-thumb { width: 14px; height: 14px; margin-top: -5px; background: var(--brown); border: 2px solid #FFFBF0; border-radius: 50%; box-shadow: 0 2px 6px rgba(139,90,43,.24); -webkit-appearance: none; }
+    .voice-range::-moz-range-thumb { width: 11px; height: 11px; background: var(--brown); border: 2px solid #FFFBF0; border-radius: 50%; }
+    .voice-range:disabled { cursor: default; opacity: .55; }
+    .voice-time { flex: 0 0 auto; color: #A9876A; font-size: 11px; font-variant-numeric: tabular-nums; }
+    .voice-status { min-height: 17px; margin: 6px 3px 0 57px; color: #AE8C70; font-size: 11px; line-height: 1.55; }
+    .voice-card.unavailable .voice-icon { background: #D8BFAE; box-shadow: none; }
+    .voice-card.unavailable .voice-wave span { animation: none; }
+    .video-lock { position: absolute; inset: 12px; z-index: 4; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 18px; color: #fff; text-align: center; background: linear-gradient(145deg, rgba(77,47,27,.78), rgba(101,62,36,.66)); border-radius: 20px; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); transition: opacity .55s ease, visibility .55s; }
+    .video-lock-badge { display: grid; place-items: center; width: 50px; height: 50px; margin-bottom: 4px; color: #FFF6E8; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.26); border-radius: 50%; }
+    .video-lock strong { font-size: 19px; line-height: 1.5; letter-spacing: 1px; }
+    .video-lock span { color: rgba(255,250,240,.82); font-family: var(--letter); font-size: 13px; line-height: 1.6; }
+    .video-frame.unlocked .video-lock { opacity: 0; visibility: hidden; pointer-events: none; }
     .video-frame { position: relative; padding: 12px; background: #FFFEF9; border: 1px solid rgba(139,90,43,.12); border-radius: 30px; box-shadow: 0 22px 60px rgba(139,90,43,.18), inset 0 0 0 5px rgba(255,228,232,.34); transform: rotate(-.6deg); }
     .video-frame::before, .video-frame::after { content: ""; position: absolute; top: -13px; z-index: 2; width: 78px; height: 24px; background: rgba(255,218,185,.78); border: 1px solid rgba(139,90,43,.06); }
     .video-frame::before { left: 8%; transform: rotate(-8deg); }
@@ -147,6 +183,7 @@
     @keyframes breathing-light { 0%,100% { opacity: .45; transform: scale(.96); } 50% { opacity: .9; transform: scale(1.04); } }
     @keyframes cue-down { 0%,100% { transform: translateY(0); } 50% { transform: translateY(7px); } }
     @keyframes hint-glow { 0%,100% { opacity: .58; text-shadow: 0 0 0 rgba(255,182,193,0); } 50% { opacity: 1; text-shadow: 0 0 18px rgba(255,182,193,.8); } }
+    @keyframes voice-dance { from { transform: scaleY(.55); } to { transform: scaleY(1.35); } }
     @keyframes flame-dance { from { transform: rotate(-5deg) scale(.94); } to { transform: rotate(5deg) scale(1.06); } }
     @keyframes star-twinkle { 0%,100% { opacity: .35; transform: scale(.75) rotate(0); } 50% { opacity: 1; transform: scale(1.16) rotate(20deg); } }
     @keyframes cake-party { 0%,100% { transform: rotate(0); } 25% { transform: rotate(-3deg) scale(1.03); } 55% { transform: rotate(3deg) scale(1.03); } 80% { transform: rotate(-1deg); } }
@@ -162,6 +199,18 @@
       .video-frame { padding: 8px; border-radius: 23px; }
       video { border-radius: 16px; }
       .video-frame::before, .video-frame::after { width: 56px; height: 19px; top: -10px; }
+      .voice-card { margin-bottom: 14px; padding: 13px 14px 11px; border-radius: 20px; }
+      .voice-main { gap: 10px; }
+      .voice-icon { width: 39px; height: 39px; }
+      .voice-title { font-size: 15px; }
+      .voice-eyebrow { font-size: 10px; letter-spacing: 1px; }
+      .voice-toggle { width: 42px; height: 42px; }
+      .voice-progress-row { gap: 8px; margin: 8px 0 0 49px; }
+      .voice-status { margin: 5px 0 0 49px; font-size: 10px; }
+      .video-lock { inset: 8px; border-radius: 16px; }
+      .video-lock-badge { width: 44px; height: 44px; }
+      .video-lock strong { font-size: 17px; }
+      .video-lock span { font-size: 11px; }
       .section-heading { margin-bottom: 42px; }
       .memory-section { padding-top: 62px; }
       .memory-stack::before { display: none; }
@@ -223,12 +272,40 @@
       <h1 id="hero-title" class="fade-in">此片致我最爱的<br><span>小宝贝田珂欣</span></h1>
       <p class="hero-subtitle delay-one fade-in">有的话我不知道怎么说出口，所以我决定用这种特别的形式，送你一份特别的礼物！</p>
       <div class="video-wrap delay-two fade-in">
-        <div class="video-frame">
-          <video id="birthday-video" controls playsinline preload="metadata" aria-label="送给田珂欣的生日视频">
+        <div id="voice-card" class="voice-card">
+          <div class="voice-main">
+            <div class="voice-icon" aria-hidden="true">
+              <div class="voice-wave"><span></span><span></span><span></span></div>
+            </div>
+            <div class="voice-copy">
+              <span class="voice-eyebrow">一封有声的悄悄话</span>
+              <strong id="voice-title" class="voice-title">点一下，先听听我的声音</strong>
+            </div>
+            <button id="voice-toggle" class="voice-toggle" type="button" aria-label="播放悄悄话录音" aria-pressed="false">
+              <svg class="play-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.5V18.5L19 12L8 5.5Z" fill="currentColor" stroke="currentColor" stroke-linejoin="round"/></svg>
+              <svg class="pause-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 6V18M16 6V18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+          <div class="voice-progress-row">
+            <input id="voice-range" class="voice-range" type="range" min="0" max="100" value="0" step="0.1" aria-label="录音播放进度">
+            <span id="voice-time" class="voice-time">00:00 / 00:00</span>
+          </div>
+          <p id="voice-status" class="voice-status" role="status">这段悄悄话听完，就能打开下面的视频。</p>
+          <audio id="voice-audio" src="voice-letter.m4a" preload="metadata" hidden></audio>
+        </div>
+        <div id="video-frame" class="video-frame">
+          <video id="birthday-video" controls playsinline preload="metadata" aria-describedby="video-lock-title" aria-label="送给田珂欣的生日视频">
             <source src="happy birthday.mp4" type="video/mp4">
             你的浏览器暂不支持视频播放，请换用新版浏览器打开。
           </video>
-          <p id="video-error" class="video-error" hidden>暂时没有读到视频。请确认真实视频与 index.html 放在同一目录，并命名为「happy birthday.mp4」。</p>
+          <div id="video-lock" class="video-lock" role="note">
+            <span class="video-lock-badge" aria-hidden="true">
+              <svg width="23" height="23" viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 10V7.5C8.5 5.57 10.07 4 12 4C13.93 4 15.5 5.57 15.5 7.5V10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="15" r="1.5" fill="currentColor"/></svg>
+            </span>
+            <strong id="video-lock-title">先听完这段悄悄话</strong>
+            <span>视频在等录音结束，再和你见面。</span>
+          </div>
+          <p id="video-error" class="video-error" hidden>暂时没有读到视频，请稍后刷新页面再试。</p>
         </div>
       </div>
       <a class="scroll-cue delay-two fade-in" href="#story" aria-label="向下阅读我们的故事">
@@ -394,9 +471,124 @@
 
       var video = document.getElementById('birthday-video');
       var videoError = document.getElementById('video-error');
+      var videoFrame = document.getElementById('video-frame');
+      var voiceCard = document.getElementById('voice-card');
+      var voiceAudio = document.getElementById('voice-audio');
+      var voiceToggle = document.getElementById('voice-toggle');
+      var voiceRange = document.getElementById('voice-range');
+      var voiceTime = document.getElementById('voice-time');
+      var voiceStatus = document.getElementById('voice-status');
+      var voiceTitle = document.getElementById('voice-title');
+      var voiceUnlocked = false;
+      var voiceDuration = 0;
+      video.controls = false;
+      voiceRange.disabled = true;
+
+      function formatVoiceTime(seconds) {
+        if (!isFinite(seconds) || seconds < 0) { return '00:00'; }
+        var minutes = Math.floor(seconds / 60);
+        var remainder = Math.floor(seconds % 60);
+        return (minutes < 10 ? '0' : '') + minutes + ':' + (remainder < 10 ? '0' : '') + remainder;
+      }
+      function unlockVideo(message) {
+        if (voiceUnlocked) { return; }
+        voiceUnlocked = true;
+        videoFrame.classList.add('unlocked');
+        video.controls = true;
+        voiceStatus.textContent = message || '好啦，现在可以打开视频了。';
+      }
+      function updateVoiceUI() {
+        var current = isFinite(voiceAudio.currentTime) ? voiceAudio.currentTime : 0;
+        var percent = voiceDuration > 0 ? Math.min(100, current / voiceDuration * 100) : 0;
+        voiceRange.value = percent;
+        voiceRange.style.setProperty('--voice-progress', percent + '%');
+        voiceRange.setAttribute('aria-valuetext', formatVoiceTime(current) + '，共 ' + formatVoiceTime(voiceDuration));
+        voiceTime.textContent = formatVoiceTime(current) + ' / ' + formatVoiceTime(voiceDuration);
+      }
+      function setVoicePlaying(isPlaying) {
+        voiceCard.classList.toggle('is-playing', isPlaying);
+        voiceToggle.setAttribute('aria-pressed', String(isPlaying));
+        if (isPlaying) {
+          voiceToggle.setAttribute('aria-label', '暂停悄悄话录音');
+          voiceTitle.textContent = '正在听，别着急';
+        } else {
+          voiceToggle.setAttribute('aria-label', voiceAudio.ended ? '重新播放悄悄话录音' : '播放悄悄话录音');
+          if (voiceAudio.ended && voiceUnlocked) {
+            voiceTitle.textContent = '悄悄话听完啦';
+          } else if (voiceAudio.currentTime > 0) {
+            voiceTitle.textContent = '悄悄话还没听完';
+          } else {
+            voiceTitle.textContent = '点一下，先听听我的声音';
+          }
+        }
+      }
+
+      voiceToggle.addEventListener('click', function () {
+        if (!voiceAudio.paused) {
+          voiceAudio.pause();
+          return;
+        }
+        video.pause();
+        if (voiceAudio.ended) { voiceAudio.currentTime = 0; }
+        var playAttempt = voiceAudio.play();
+        if (playAttempt && typeof playAttempt.catch === 'function') {
+          playAttempt.catch(function () {
+            voiceStatus.textContent = '录音没有开始播放，请再点一次播放按钮。';
+          });
+        }
+      });
+      voiceRange.addEventListener('input', function () {
+        if (voiceDuration <= 0) { return; }
+        voiceAudio.currentTime = voiceDuration * Number(voiceRange.value) / 100;
+        updateVoiceUI();
+      });
+      voiceAudio.addEventListener('loadedmetadata', function () {
+        voiceDuration = isFinite(voiceAudio.duration) ? voiceAudio.duration : 0;
+        voiceRange.disabled = voiceDuration <= 0;
+        updateVoiceUI();
+      });
+      if (voiceAudio.readyState >= 1) {
+        voiceDuration = isFinite(voiceAudio.duration) ? voiceAudio.duration : 0;
+        voiceRange.disabled = voiceDuration <= 0;
+        updateVoiceUI();
+      }
+      voiceAudio.addEventListener('timeupdate', updateVoiceUI);
+      voiceAudio.addEventListener('play', function () {
+        video.pause();
+        setVoicePlaying(true);
+        if (!voiceUnlocked) { voiceStatus.textContent = '我在认真说，你在认真听。'; }
+      });
+      voiceAudio.addEventListener('pause', function () {
+        setVoicePlaying(false);
+        if (!voiceUnlocked) { voiceStatus.textContent = '这段悄悄话听完，就能打开下面的视频。'; }
+      });
+      voiceAudio.addEventListener('ended', function () {
+        updateVoiceUI();
+        setVoicePlaying(false);
+        voiceTitle.textContent = '悄悄话听完啦';
+        unlockVideo('好啦，现在可以打开视频了。');
+      });
+      voiceAudio.addEventListener('error', function () {
+        voiceUnavailable = true;
+        voiceCard.classList.add('unavailable');
+        voiceToggle.disabled = true;
+        voiceToggle.setAttribute('aria-label', '录音暂时无法播放');
+        voiceTitle.textContent = '这段悄悄话暂时没能播放';
+        unlockVideo('录音暂时没有加载成功，先打开视频吧。');
+      });
+
       video.addEventListener('error', function () { videoError.hidden = false; });
       video.querySelector('source').addEventListener('error', function () { videoError.hidden = false; });
       video.addEventListener('loadedmetadata', function () { videoError.hidden = true; });
+      video.addEventListener('play', function () {
+        if (!voiceUnlocked) {
+          video.pause();
+          voiceStatus.textContent = '先听完上面的悄悄话，视频就会打开。';
+          voiceToggle.focus();
+          return;
+        }
+        voiceAudio.pause();
+      });
 
       var secretButton = document.querySelector('.secret-button');
       var secretPanel = document.getElementById('secret-panel');
