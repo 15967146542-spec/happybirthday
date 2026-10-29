@@ -1,0 +1,4 @@
+# 忽略视频文件
+1.mp4
+# 忽略 workbuddy 目录
+.workbuddy/
